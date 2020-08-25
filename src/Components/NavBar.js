@@ -36,18 +36,14 @@ const Sign = styled.button`
   display: flex;
   flex-direction: column;
   border: none;
-  cursor: pointer;
+  font-size: 16px;
+  text-transform: lowercase;
+  color: #ffffff;  
   background-color: transparent;
 `;
 
 const ImgSign = styled.img`
   margin-bottom: 3px;
-`;
-
-const TextSign = styled.span`
-  font-size: 16px;
-  text-transform: lowercase;
-  color: #ffffff;  
 `;
 
 export const NavBar = () => (
@@ -57,8 +53,8 @@ export const NavBar = () => (
       <H1>MrDonald's</H1>
     </Logo>
     <Sign>
-      <ImgSign src={SignImg} alt="user" />
-      <TextSign>Войти</TextSign>
+      <ImgSign src={SignImg} alt="войти" />
+      <span>Войти</span>
     </Sign>
   </NavBarStyled>
 );
