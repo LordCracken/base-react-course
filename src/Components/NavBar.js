@@ -35,7 +35,7 @@ const ImgLogo = styled.img`
 const Sign = styled.button`
   display: flex;
   flex-direction: column;
-  border: none;
+  align-items: center;
   font-size: 16px;
   text-transform: lowercase;
   color: #ffffff;  
