@@ -47,11 +47,20 @@ const Info = styled.div`
 `;
 
 const ButtonCheckout = styled.button`
-  padding: 20px 0;
+  border: solid transparent 2px;
+  padding: 19px 0;
   width: 250px;
   font-size: 21px;
+  font-family: inherit;
   color: white;
   background: #299B01;
+  transition-property: color, background, border;
+  transition-duration: .3s;
+  &:hover {
+    border: solid #299B01 2px;
+    color: #299B01;
+    background: #fff;
+  }
 `;
 
 export const ModalItem = ({ openItem, setOpenItem }) => {
