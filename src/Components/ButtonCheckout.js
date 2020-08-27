@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const ButtonCheckout = styled.button`
+  display: block;
+  margin: 0 auto;
   border: solid transparent 2px;
   padding: 19px 0;
   width: 250px;
