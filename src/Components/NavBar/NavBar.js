@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import LogoImg from '../image/logo.svg';
-import SignImg from '../image/sign.svg';
+import LogoImg from '../../image/logo.svg';
+import SignImg from '../../image/sign.svg';
 
 const NavBarStyled = styled.header`
   position: fixed;
@@ -13,7 +13,7 @@ const NavBarStyled = styled.header`
   align-items: center;
   padding: 15px;
   height: 80px;
-  width: 100vw;
+  width: 100%;
   color: #ffffff;
   background-color: #299B01;
 `;
@@ -36,6 +36,7 @@ const Sign = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0;
   font-size: 16px;
   text-transform: lowercase;
   color: #ffffff;  
