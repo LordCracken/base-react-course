@@ -35,19 +35,22 @@ const Banner = styled.div`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 40px 43px;
   height: calc(100% - 200px);
 `;
 
-
 const Info = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  align-content: flex-start;
   font-family: Pacifico, cursive;
   font-size: 30px;
+`;
+
+const Settings = styled.div`
+  width: 100%;
 `;
 
 const TotalPriceItem = styled.div`
@@ -79,11 +82,13 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
             <span>{openItem.name}</span>
             <span>{formatCurrency(openItem.price)}</span>
           </Info>
-          <CountItem {...counter} />
-          <TotalPriceItem>
-            <span>Цена:</span>
-            <span>{formatCurrency(totalPriceItems(order))}</span>
-          </TotalPriceItem>
+          <Settings>
+            <CountItem {...counter} />
+            <TotalPriceItem>
+              <span>Цена:</span>
+              <span>{formatCurrency(totalPriceItems(order))}</span>
+            </TotalPriceItem>
+          </Settings>
           <ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
         </Content>
       </Modal>
