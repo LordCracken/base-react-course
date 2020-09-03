@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { CountItem } from './CountItem';
 import { ButtonCheckout } from '../Style/ButtonCheckout';
+import { Toppings } from './Toppings';
 import { useCount } from '../Hooks/useCount';
+import { useToppings } from '../Hooks/useToppings';
 import { totalPriceItems, formatCurrency } from '../Functions/secondaryFunction'
 
 const Overlay = styled.div`
@@ -20,7 +22,6 @@ const Overlay = styled.div`
 
 const Modal = styled.div`
   width: 600px;
-  height: 600px;
   background-color: #fff;
 `;
 
@@ -33,10 +34,6 @@ const Banner = styled.div`
 `;
 
 const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: 20px 40px 43px;
   height: calc(100% - 200px);
 `;
@@ -49,24 +46,22 @@ const Info = styled.div`
   font-size: 30px;
 `;
 
-const Settings = styled.div`
-  width: 100%;
-`;
-
 const TotalPriceItem = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 17px;
 `;
 
 export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
 
   const counter = useCount();
+  const toppings = useToppings(openItem);
 
   const closeModal = e => {
     if (e.target.id === 'overlay') setOpenItem(null)
   };
 
-  const order = { ...openItem, count: counter.count };
+  const order = { ...openItem, count: counter.count, topping: toppings.toppings };
 
   const addToOrder = () => {
     setOrders([...orders, order]);
@@ -82,13 +77,12 @@ export const ModalItem = ({ openItem, setOpenItem, orders, setOrders }) => {
             <span>{openItem.name}</span>
             <span>{formatCurrency(openItem.price)}</span>
           </Info>
-          <Settings>
             <CountItem {...counter} />
+            {openItem.toppings && <Toppings {...toppings} />}
             <TotalPriceItem>
-              <span>Цена:</span>
+              <span>Итоговая цена:</span>
               <span>{formatCurrency(totalPriceItems(order))}</span>
             </TotalPriceItem>
-          </Settings>
           <ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
         </Content>
       </Modal>
