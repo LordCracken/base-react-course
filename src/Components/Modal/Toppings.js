@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ToppingWrap = styled.div`
-  max-width: 500px;
   margin: 0 auto;
   margin-bottom: 30px;
   column-count: 2;
   column-gap: 15px;
+  max-width: 500px;
 `;
 
 const ToppingLabel = styled.label`
@@ -27,9 +27,8 @@ export const Toppings = ({ toppings, checkToppings }) => (
         <ToppingLabel key={i}>
           <ToppingCheckbox type="checkbox" checked={item.checked} onChange={() => checkToppings(i)} />
           {item.name}
-      </ToppingLabel>
-      ))}
-      
+        </ToppingLabel>
+      ))}   
     </ToppingWrap>
   </>
 );
