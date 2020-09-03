@@ -23,7 +23,7 @@ const ItemToppings = styled.span`
 const ItemPrice = styled.span`
   margin-left: 30px;
   margin-right: 13px;
-  min-width: 79px;
+  min-width: 95px;
   text-align: right;
 `;
 
@@ -36,8 +36,8 @@ const TrashButton = styled.button`
   background-repeat: no-repeat;
 `;
 
-export const OrderListItem = ({ order, deleteOrder }) => (
-  <OrderItemStyled>
+export const OrderListItem = ({ order, index, deleteOrder, setOpenItem }) => (
+  <OrderItemStyled onClick={e => e.target.tagName.toLowerCase() === 'button' ? null : setOpenItem({...order, index})}>
     <ItemName>{order.name} {order.choice}</ItemName>
     <span>{order.count}</span>
     <ItemPrice>{formatCurrency(totalPriceItems(order))}</ItemPrice>

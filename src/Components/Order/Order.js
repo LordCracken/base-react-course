@@ -11,8 +11,7 @@ const OrderStyled = styled.section`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  min-width: 380px;
-  max-width: 380px;
+  width: 420px;
   height: calc(100% - 80px);
   background-color: #fff;
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
@@ -47,7 +46,7 @@ const EmptyList = styled.span`
   text-align: center;
 `;
 
-export const Order = ({ orders, setOrders }) => {
+export const Order = ({ orders, setOrders, setOpenItem }) => {
 
   const total = orders.reduce((result, order) => totalPriceItems(order) + result, 0);
   const totalCounter = orders.reduce((result, order) => order.count + result, 0);
@@ -59,7 +58,12 @@ export const Order = ({ orders, setOrders }) => {
       <OrderContent>
         {orders.length ? 
         <ul>
-          {orders.map(order => <OrderListItem order={order} key={order.name} deleteOrder={deleteOrder} />)}
+          {orders.map((order, i) => <OrderListItem 
+                                  order={order} 
+                                  key={i}
+                                  index={i} 
+                                  deleteOrder={deleteOrder} 
+                                  setOpenItem={setOpenItem} />)}
         </ul> :
         <EmptyList>Список заказов пуст</EmptyList>}
       </OrderContent>
