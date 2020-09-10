@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { ContextItem } from '../Functions/ContextItem';
 
 const ToppingWrap = styled.div`
   margin: 0 auto;
@@ -19,16 +20,19 @@ const ToppingCheckbox = styled.input`
   cursor: pointer;
 `;
 
-export const Toppings = ({ toppings, checkToppings }) => (
-  <>
-    <h3>Добавки</h3>
-    <ToppingWrap>
-      {toppings.map((item, i) => (
-        <ToppingLabel key={i}>
-          <ToppingCheckbox type="checkbox" checked={item.checked} onChange={() => checkToppings(i)} />
-          {item.name}
-        </ToppingLabel>
-      ))}   
-    </ToppingWrap>
-  </>
-);
+export const Toppings = () => {
+  const { toppings: { toppings, checkToppings } } = useContext(ContextItem);
+  return (
+    <>
+      <h3>Добавки</h3>
+      <ToppingWrap>
+        {toppings.map((item, i) => (
+          <ToppingLabel key={i}>
+            <ToppingCheckbox type="checkbox" checked={item.checked} onChange={() => checkToppings(i)} />
+            {item.name}
+          </ToppingLabel>
+        ))}   
+      </ToppingWrap>
+    </>
+  )
+};

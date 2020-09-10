@@ -9,6 +9,7 @@ import { totalPriceItems, formatCurrency, projection } from '../Functions/second
 const Modal = styled.div`
   padding: 30px;
   width: 600px;
+  text-align: center;
   background-color: #fff;
 `;
 
@@ -34,6 +35,7 @@ const sendOrder = (dataBase, orders, authentication) => {
   });
 };
 
+
 export const OrderConfirm = () => {
   const { 
     orders: { orders, setOrders }, 
@@ -41,24 +43,31 @@ export const OrderConfirm = () => {
     orderConfirm: { setOpenOrderConfirm }, 
     firebaseDatabase 
   } = useContext(Context);
+  
+  const closeOrderConfirm = e => {
+    if (e.target.id === 'confirm-overlay') setOpenOrderConfirm(false)
+  };
 
   const dataBase = firebaseDatabase();
   const total = orders.reduce((result, order) => totalPriceItems(order) + result, 0);
   return (
-    <Overlay>
+    <Overlay id="confirm-overlay" onClick={closeOrderConfirm}>
       <Modal>
         <OrderTitle>{authentication.displayName}</OrderTitle>
-        <Text>Осталось только подтвердить ваш заказ</Text>
-        <Total>
-          <span>Итого</span>
-          <TotalPrice>{formatCurrency(total)}</TotalPrice>
-        </Total>
-        <ButtonCheckout 
-          onClick={() => {
-            sendOrder(dataBase, orders, authentication);
-            setOrders([]);
-            setOpenOrderConfirm(false);
-          }}>Подтвердить</ButtonCheckout>
+        {orders.length ? 
+          <>
+            <Text>Осталось только подтвердить ваш заказ</Text>
+            <Total>
+              <span>Итого</span>
+              <TotalPrice>{formatCurrency(total)}</TotalPrice>
+            </Total>
+            <ButtonCheckout 
+              onClick={() => {
+                sendOrder(dataBase, orders, authentication);
+                setOrders([]);
+              }}>Подтвердить</ButtonCheckout>
+          </> : `Спасибо за заказ!`
+          }
       </Modal>
     </Overlay>
   );

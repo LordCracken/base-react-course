@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { ContextItem } from '../Functions/ContextItem';
 
 const ChoiceWrap = styled.div`
   display: flex;
@@ -20,16 +21,19 @@ const ChoiceLabel = styled.label`
   cursor: pointer;
 `;
 
-export const Choices = ({ openItem, choice, changeChoices }) => (
-  <>
-    <h3>Выбирайте:</h3>
-    <ChoiceWrap>
-      {openItem.choices.map((item, i) => (
-        <ChoiceLabel key={i}>
-          <ChoiceRadio type="radio" name="choices" checked={choice === item} value={item} onChange={changeChoices} />
-          {item}
-        </ChoiceLabel>
-      ))}   
-    </ChoiceWrap>
-  </>
-);
+export const Choices = () => {
+  const { openItem, choices: { choice, changeChoices } } = useContext(ContextItem);
+  return (
+    <>
+      <h3>Выбирайте:</h3>
+      <ChoiceWrap>
+        {openItem.choices.map((item, i) => (
+          <ChoiceLabel key={i}>
+            <ChoiceRadio type="radio" name="choices" checked={choice === item} value={item} onChange={changeChoices} />
+            {item}
+          </ChoiceLabel>
+        ))}   
+      </ChoiceWrap>
+    </>
+  )
+};
