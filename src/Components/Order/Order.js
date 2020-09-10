@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { ButtonCheckout } from '../Style/ButtonCheckout';
+import { Context } from '../Functions/context';
 import { OrderListItem } from './OrderListItem';
-import { totalPriceItems, formatCurrency, projection } from '../Functions/secondaryFunction';
+import { OrderTitle, Total, TotalPrice } from '../Style/OrderComponents';
+import { ButtonCheckout } from '../Style/ButtonCheckout';
+import { totalPriceItems, formatCurrency } from '../Functions/secondaryFunction';
 
 const OrderStyled = styled.section`
   position: fixed;
@@ -17,28 +19,8 @@ const OrderStyled = styled.section`
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
 `;
 
-const OrderTitle = styled.h2`
-  margin-bottom: 15px;
-  text-align: center;
-  text-transform: uppercase;
-`;
-
 const OrderContent = styled.div`
   flex-grow: 1;
-`;
-
-const Total = styled.div`
-  display: flex;
-  margin-bottom: 63px;
-  & span:first-child {
-    flex-grow: 1;
-  }
-`;
-
-const TotalPrice = styled.span`
-  margin-left: 30px;
-  min-width: 47px;
-  text-align: right;
 `;
 
 const EmptyList = styled.span`
@@ -46,31 +28,19 @@ const EmptyList = styled.span`
   text-align: center;
 `;
 
-const rulesData = {
-  name: ['name'],
-  price: ['price'],
-  count: ['count'],
-  topping: ['topping', arr => arr.filter(obj => obj.checked).map(obj => obj.name), arr => arr.length ? arr : 'no topping'],
-  choice: ['choice', item => item ? item : 'no choices']
-};
-
-export const Order = ({ orders, setOrders, setOpenItem, authentication, logIn, firebaseDatabase }) => {
-  const dataBase = firebaseDatabase();
-  const sendOrder = () => {
-    const newOrder = orders.map(projection(rulesData));
-    dataBase.ref('orders').push().set({
-      nameClient: authentication.displayName,
-      email: authentication.email,
-      order: newOrder
-    });
-    setOrders([]);
-  };
+export const Order = () => {
+  const { 
+    orders: { orders, setOrders }, 
+    openItem: { setOpenItem }, 
+    auth: { authentication, logIn }, 
+    orderConfirm: { setOpenOrderConfirm } 
+  } = useContext(Context);
 
   const total = orders.reduce((result, order) => totalPriceItems(order) + result, 0);
   const totalCounter = orders.reduce((result, order) => order.count + result, 0);
   const deleteOrder = order => setOrders(orders.filter(item => item !== order));
 
-  return(
+  return (
     <OrderStyled>
       <OrderTitle>Ваш заказ</OrderTitle>
       <OrderContent>
@@ -85,12 +55,15 @@ export const Order = ({ orders, setOrders, setOpenItem, authentication, logIn, f
         </ul> :
         <EmptyList>Список заказов пуст</EmptyList>}
       </OrderContent>
-      <Total>
-        <span>Итого</span>
-        <span>{totalCounter}</span>
-        <TotalPrice>{formatCurrency(total)}</TotalPrice>
-      </Total>
-      <ButtonCheckout onClick={() => authentication ? sendOrder() : logIn()}>Оформить</ButtonCheckout>
+      {orders.length ? 
+      <>
+        <Total>
+          <span>Итого</span>
+          <span>{totalCounter}</span>
+          <TotalPrice>{formatCurrency(total)}</TotalPrice>
+        </Total>
+        <ButtonCheckout onClick={() => authentication ? setOpenOrderConfirm(true) : logIn()}>Оформить</ButtonCheckout>
+      </> : null}
     </OrderStyled>
   )
 };
