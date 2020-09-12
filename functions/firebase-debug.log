@@ -1,0 +1,44 @@
+[debug] [2020-09-11T11:35:42.949Z] ----------------------------------------------------------------------
+[debug] [2020-09-11T11:35:42.951Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\vladi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js functions:shell
+[debug] [2020-09-11T11:35:42.952Z] CLI Version:   8.10.0
+[debug] [2020-09-11T11:35:42.952Z] Platform:      win32
+[debug] [2020-09-11T11:35:42.952Z] Node Version:  v14.8.0
+[debug] [2020-09-11T11:35:42.953Z] Time:          Fri Sep 11 2020 14:35:42 GMT+0300 (Москва, стандартное время)
+[debug] [2020-09-11T11:35:42.953Z] ----------------------------------------------------------------------
+[debug] [2020-09-11T11:35:42.953Z] 
+[debug] [2020-09-11T11:35:42.962Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-09-11T11:35:42.962Z] > authorizing via signed-in user
+[debug] [2020-09-11T11:35:42.963Z] [iam] checking project mrdonalds-vladyakim for permissions ["firebase.projects.get"]
+[debug] [2020-09-11T11:35:42.966Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-09-11T11:35:42.966Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-09-11T11:35:43.086Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 11 Sep 2020 11:35:44 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-09-11T11:35:43.099Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/mrdonalds-vladyakim:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-09-11T11:35:43.980Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 11 Sep 2020 11:35:45 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=778","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  Your requested "node" version "8" doesn't match your global version "14" {"metadata":{"emulator":{"name":"functions"},"message":"Your requested \"node\" version \"8\" doesn't match your global version \"14\""}}
+[debug] [2020-09-11T11:35:46.014Z] defaultcredentials: writing to file C:\Users\vladi\AppData\Roaming\firebase\vladislav070201_gmail_com_application_default_credentials.json
+[debug] [2020-09-11T11:35:46.016Z] DEBUG: Setting GAC to C:\Users\vladi\AppData\Roaming\firebase\vladislav070201_gmail_com_application_default_credentials.json
+[debug] [2020-09-11T11:35:46.025Z] [functions] Watching "I:\Web-development\glo-academy\base-react-course\functions" for Cloud Functions...
+[debug] [2020-09-11T11:35:46.039Z] DEBUG: [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-09-11T11:35:46.040Z] DEBUG: [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-09-11T11:35:46.040Z] DEBUG: [worker-pool] submitWork(triggerId=)
+[debug] [2020-09-11T11:35:46.040Z] DEBUG: [worker-~diagnostic~-5046ceea-4537-4dda-8af2-1d6c0e3c3da3]: Assigning socketPath: \\?\pipe\I:\Web-development\glo-academy\base-react-course\functions\11268
+[debug] [2020-09-11T11:35:46.040Z] DEBUG: [worker-~diagnostic~-5046ceea-4537-4dda-8af2-1d6c0e3c3da3]: BUSY
+[debug] [2020-09-11T11:35:46.525Z] DEBUG: [runtime-status] [11268] Functions runtime initialized. {"cwd":"I:\\Web-development\\glo-academy\\base-react-course\\functions","node_version":"14.8.0"}
+[debug] [2020-09-11T11:35:46.526Z] DEBUG: [runtime-status] [11268] Disabled runtime features: undefined
+[debug] [2020-09-11T11:35:46.530Z] DEBUG: [runtime-status] [11268] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"I:\\Web-development\\glo-academy\\base-react-course\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-09-11T11:35:46.532Z] DEBUG: [runtime-status] [11268] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.11.0","resolution":"I:\\Web-development\\glo-academy\\base-react-course\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-09-11T11:35:46.534Z] DEBUG: [runtime-status] [11268] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.11.0","resolution":"I:\\Web-development\\glo-academy\\base-react-course\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-09-11T11:35:46.537Z] DEBUG: [runtime-status] [11268] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}]
+[debug] [2020-09-11T11:35:46.537Z] DEBUG: [runtime-status] [11268] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.11.0","resolution":"I:\\Web-development\\glo-academy\\base-react-course\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-09-11T11:35:46.593Z] DEBUG: [runtime-status] [11268] Checked functions.config() {"config":{}}
+[debug] [2020-09-11T11:35:46.593Z] DEBUG: [runtime-status] [11268] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.11.0","resolution":"I:\\Web-development\\glo-academy\\base-react-course\\functions\\node_modules\\firebase-functions\\lib\\index.js"}}
+[debug] [2020-09-11T11:35:46.594Z] DEBUG: [runtime-status] [11268] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.11.0","resolution":"I:\\Web-development\\glo-academy\\base-react-course\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-09-11T11:35:46.595Z] DEBUG: [runtime-status] [11268] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.13.0","resolution":"I:\\Web-development\\glo-academy\\base-react-course\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-09-11T11:35:46.596Z] DEBUG: [runtime-status] [11268] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.11.0","resolution":"I:\\Web-development\\glo-academy\\base-react-course\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-09-11T11:35:46.596Z] DEBUG: [runtime-status] [11268] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.13.0","resolution":"I:\\Web-development\\glo-academy\\base-react-course\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2020-09-11T11:35:46.737Z] [functions[sendUserEmail]] function ignored because the database emulator does not exist or is not running.
+[info] i  functions: Loaded functions: sendUserEmail 
+[warn] !  functions: The following emulators are not running, calls to these services will affect production: firestore, database, pubsub 
+[debug] [2020-09-11T11:35:46.761Z] DEBUG: [worker-~diagnostic~-5046ceea-4537-4dda-8af2-1d6c0e3c3da3]: IDLE

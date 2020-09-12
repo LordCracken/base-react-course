@@ -21,6 +21,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 80px;
   background-color: rgba(0, 0, 0, .5);
 `;
 

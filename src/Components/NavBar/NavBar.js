@@ -27,6 +27,9 @@ const Logo = styled.div`
 const H1 = styled.h1`
   font-size: 24px;
   margin-left: 15px;
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const ImgLogo = styled.img`
@@ -55,7 +58,6 @@ const User = styled.div`
 `;
 
 const LogOut = styled.span`
-  margin-right: 30px;
   font-size: 20px;
   font-weight: 700;
   cursor: pointer;
@@ -63,6 +65,12 @@ const LogOut = styled.span`
 
 const Figure = styled.figure`
   margin: 0 30px;
+  @media (max-width: 768px) {
+    margin: 0 15px;
+    figcaption {
+      font-size: 12px;
+    }
+  }
 `;
 
 export const NavBar = () => {

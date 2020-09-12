@@ -9,7 +9,6 @@ import { totalPriceItems, formatCurrency, projection } from '../Functions/second
 const Modal = styled.div`
   padding: 30px;
   width: 600px;
-  text-align: center;
   background-color: #fff;
 `;
 
@@ -50,6 +49,7 @@ export const OrderConfirm = () => {
 
   const dataBase = firebaseDatabase();
   const total = orders.reduce((result, order) => totalPriceItems(order) + result, 0);
+  const totalCounter = orders.reduce((result, order) => order.count + result, 0);
   return (
     <Overlay id="confirm-overlay" onClick={closeOrderConfirm}>
       <Modal>
@@ -59,6 +59,7 @@ export const OrderConfirm = () => {
             <Text>Осталось только подтвердить ваш заказ</Text>
             <Total>
               <span>Итого</span>
+              <span>{totalCounter}</span>
               <TotalPrice>{formatCurrency(total)}</TotalPrice>
             </Total>
             <ButtonCheckout 

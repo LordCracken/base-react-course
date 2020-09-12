@@ -17,10 +17,57 @@ const OrderStyled = styled.section`
   height: calc(100% - 80px);
   background-color: #fff;
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  #order-sign {
+    display: none;
+  }
+  @media (max-width: 1200px) {
+    left: -380px;
+    padding: 10px;
+    transition: left 0.5s;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+    }
+    #order-sign {
+      display: block;
+    }
+    &:hover {
+      left: 0;
+      transition: left 0.5s;
+      &::after {
+        display: none;
+      }
+      #order-sign {
+        display: none;
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    left: -260px;
+    max-width: 300px;
+  }
+`;
+
+const OrderSign = styled.span`
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  color: grey;
+  transform: rotate(-90deg);
+  z-index: 3;
 `;
 
 const OrderContent = styled.div`
   flex-grow: 1;
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
 const EmptyList = styled.span`
@@ -42,6 +89,7 @@ export const Order = () => {
 
   return (
     <OrderStyled>
+      <OrderSign id="order-sign">Заказ</OrderSign>
       <OrderTitle>Ваш заказ</OrderTitle>
       <OrderContent>
         {orders.length ? 

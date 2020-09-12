@@ -7,4 +7,7 @@ height: 210px;
 background-image: url(${bannerImg});
 background-repeat: no-repeat;
 background-size: cover;
+@media (max-width: 576px) {
+  height: 105px;
+}
 `;

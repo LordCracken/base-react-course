@@ -4,6 +4,9 @@ export const OrderTitle = styled.h2`
   margin-bottom: 15px;
   text-align: center;
   text-transform: uppercase;
+  @media (max-width: 480px) {
+    font-size: 16px;
+  }
 `;
 
 export const Total = styled.div`

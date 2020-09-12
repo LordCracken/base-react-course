@@ -8,10 +8,17 @@ const OrderItemStyled = styled.li`
   flex-wrap: wrap;
   margin: 15px 0;
   cursor: pointer;
+  @media (max-width: 480px) {
+    justify-content: space-between;
+  }
 `;
 
 const ItemName = styled.span`
   flex-grow: 1;
+  max-width: 180px;
+  @media (max-width: 480px) {
+    max-width: 110px;
+  }
 `;
 
 const ItemToppings = styled.span`
@@ -22,10 +29,15 @@ const ItemToppings = styled.span`
 `;
 
 const ItemPrice = styled.span`
-  margin-left: 30px;
   margin-right: 13px;
+  margin-left: 30px;
   min-width: 95px;
   text-align: right;
+  @media (max-width: 480px) {
+    margin-right: 8px;
+    margin-left: 15px;
+    min-width: 80px;
+  }
 `;
 
 const TrashButton = styled.button`

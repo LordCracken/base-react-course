@@ -10,10 +10,24 @@ import errorImg from '../../image/error.png';
 const MenuStyled = styled.main`
   margin-top: 80px;
   margin-left: 420px;
+  @media (max-width: 1200px) {
+    margin-left: 0;
+  }
 `;
 
 const SectionMenu = styled.section`
   padding: 30px;
+  @media (max-width: 1200px) {
+    margin-left: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+`;
+
+const MenuHeading = styled.h2`
+  @media (max-width: 1360px) {
+    text-align: center;
+  }
 `;
 
 export const Menu = () => {
@@ -27,13 +41,13 @@ export const Menu = () => {
       {res.response ? 
         <>
           <SectionMenu>
-            <h2>Бургеры</h2>
+            <MenuHeading>Бургеры</MenuHeading>
             <ListItem 
               itemList={dbMenu.burger}
               setOpenItem={setOpenItem} />
           </SectionMenu>
           <SectionMenu>
-            <h2>Закуски / Напитки</h2>
+            <MenuHeading>Закуски / Напитки</MenuHeading>
             <ListItem 
               itemList={dbMenu.other}
               setOpenItem={setOpenItem} />

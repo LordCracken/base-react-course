@@ -8,6 +8,10 @@
 # testing
 /coverage
 
+# confidentiality
+
+/functions/config.js
+
 # production
 /build
 
